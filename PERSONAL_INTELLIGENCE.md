@@ -40,6 +40,22 @@ baseline model. Since this is a health-risk screening task, the baseline
 model was selected because it maintained the same accuracy while achieving
 higher recall.
 
+#### Decision 3 — Scratch Logistic Regression Implementation
+
+**Chosen:** Implement Logistic Regression from scratch using NumPy,
+including sigmoid, binary cross-entropy loss, gradient descent,
+standardization, prediction, and an own confusion matrix.
+
+**Rejected:** Use only the sklearn Logistic Regression implementation
+for Level 2 without implementing the optimization process manually.
+
+**Reason:** The assignment requires a from-scratch NumPy implementation
+for Level 2. The implementation was validated against sklearn using the
+same seed, features, train/test split, and standardization procedure.
+Both models produced identical accuracy, precision, recall, and test-set
+confusion matrices. The top three features by absolute weight were also
+the same.
+
 ### Question B
 
 #### Decision 1

@@ -19,6 +19,22 @@ initial screening.
 
 The remaining 11 baseline features were used for prediction.
 
+## Data Quality Check
+
+Before model training, the dataset was checked for common data-quality
+issues.
+
+The checks found:
+
+- 0 missing values
+- 0 duplicate rows
+- Binary features contained only 0 and 1
+- The target variable contained only 0 and 1
+- All model input features were numeric
+
+Therefore, no data-cleaning transformations such as missing-value
+imputation, duplicate removal, or categorical encoding were required.
+
 ## Experimental Setup
 
 - Seed: 50
