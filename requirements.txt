@@ -10,3 +10,4 @@ pydantic
 pytest
 psycopg[binary]
 httpx2
+requests
