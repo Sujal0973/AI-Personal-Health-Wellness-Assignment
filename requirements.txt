@@ -9,5 +9,5 @@ uvicorn
 pydantic
 pytest
 psycopg[binary]
-httpx2
+httpx
 requests

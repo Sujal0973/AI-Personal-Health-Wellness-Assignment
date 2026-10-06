@@ -3,6 +3,8 @@ from pathlib import Path
 import joblib
 import pandas as pd
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -12,9 +14,14 @@ from .database import initialize_database, save_prediction, get_stats
 # --------------------------------------------------
 # Application setup
 # --------------------------------------------------
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    initialize_database()
+    yield
 
 app = FastAPI(
     title="Heart Failure Risk Prediction API",
+    lifespan=lifespan,
     description="API for predicting heart failure mortality risk.",
     version="1.0.0",
 )
@@ -29,7 +36,6 @@ app.add_middleware(
     allow_headers=["Content-Type"],
 )
 
-initialize_database()
 
 # --------------------------------------------------
 # Load trained model

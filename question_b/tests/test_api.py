@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from fastapi.testclient import TestClient
 
 from question_b.api.main import app
@@ -28,7 +30,8 @@ def test_health_endpoint():
     assert response.json()["status"] == "healthy"
 
 
-def test_predict_valid_input():
+@patch("question_b.api.main.save_prediction")
+def test_predict_valid_input(mock_save_prediction):
     response = client.post("/predict", json=VALID_PATIENT)
 
     assert response.status_code == 200
@@ -42,6 +45,8 @@ def test_predict_valid_input():
 
     assert data["prediction"] in [0, 1]
     assert 0 <= data["predicted_risk"] <= 1
+
+    mock_save_prediction.assert_called_once()
 
 
 def test_predict_invalid_input():

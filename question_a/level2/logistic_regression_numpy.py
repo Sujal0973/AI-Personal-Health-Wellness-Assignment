@@ -2,8 +2,6 @@ import numpy as np
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, precision_score, recall_score
-
 
 # =========================
 # Configuration
@@ -168,20 +166,6 @@ y_pred = model.predict(X_test)
 print("\nPredictions generated.")
 
 # =========================
-# Evaluation
-# =========================
-
-accuracy = accuracy_score(y_test, y_pred)
-precision = precision_score(y_test, y_pred, zero_division=0)
-recall = recall_score(y_test, y_pred, zero_division=0)
-
-print("\nScratch Logistic Regression")
-print("=" * 40)
-print(f"Accuracy : {accuracy:.4f}")
-print(f"Precision: {precision:.4f}")
-print(f"Recall   : {recall:.4f}")
-
-# =========================
 # Own confusion matrix
 # =========================
 
@@ -194,6 +178,33 @@ confusion_matrix_own = np.array([
     [true_negative, false_positive],
     [false_negative, true_positive]
 ])
+
+# =========================
+# Evaluation from scratch
+# =========================
+
+accuracy = (
+    (true_positive + true_negative)
+    / len(y_test)
+)
+
+precision = (
+    true_positive / (true_positive + false_positive)
+    if (true_positive + false_positive) > 0
+    else 0.0
+)
+
+recall = (
+    true_positive / (true_positive + false_negative)
+    if (true_positive + false_negative) > 0
+    else 0.0
+)
+
+print("\nScratch Logistic Regression")
+print("=" * 40)
+print(f"Accuracy : {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall   : {recall:.4f}")
 
 print("\nOwn Confusion Matrix")
 print("=" * 40)
