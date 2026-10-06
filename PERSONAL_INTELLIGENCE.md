@@ -1,6 +1,7 @@
 # Personal Intelligence Note
 
 **Course:** B.E. (AI & ML) — Technical Assignment (October 2026)  
+**Candidate Name:** Sujal Agrahari  
 **Candidate USN:** `1DA23AI050`  
 **Personal Random Seed ($S$):** `50`  
 **Selected Questions:**
@@ -95,7 +96,7 @@ To satisfy the integrity requirement (*"Commit each Level 3 prediction to GitHub
   ```text
   RuntimeError: The starlette.testclient module requires httpx.
   ```
-  I diagnosed the missing dependency, installed `httpx2`, added it to `requirements.txt`, and verified that all 3 automated tests passed cleanly.
+  I diagnosed the missing dependency, installed `httpx`, added it to `requirements.txt`, and verified that all 3 automated tests passed cleanly.
 
 #### Weakness 2: AI Suggestion of Data Leakage Features
 - **Issue:** When prompting the AI for feature engineering strategies to maximize classification accuracy in Question A, it suggested utilizing the `time` column to easily reach >85% accuracy.

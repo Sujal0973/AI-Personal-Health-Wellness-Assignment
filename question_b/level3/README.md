@@ -11,6 +11,7 @@ Systematically validate application resilience, fault tolerance, and concurrency
 
 ## 2. Seed & Environment Setup
 
+- **Candidate Name:** Sujal Agrahari
 - **Candidate USN:** `1DA23AI050`
 - **Assigned Seed ($S$):** `50`
 - **Application Endpoint:** `http://127.0.0.1:8000`

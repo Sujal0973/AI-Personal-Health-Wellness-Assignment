@@ -1,6 +1,7 @@
 # AI for Personal Health and Wellness
 
 [![Technical Assignment](https://img.shields.io/badge/B.E._AI_%26_ML-Assignment_Oct_2026-blue.svg)](https://github.com/)
+[![Candidate](https://img.shields.io/badge/Candidate-Sujal_Agrahari-informational.svg)](https://github.com/)
 [![Candidate USN](https://img.shields.io/badge/USN-1DA23AI050-green.svg)](https://github.com/)
 [![Random Seed](https://img.shields.io/badge/Random_Seed_S-50-orange.svg)](https://github.com/)
 [![Python](https://img.shields.io/badge/Python-3.11+-brightgreen.svg)](https://python.org)
@@ -12,6 +13,7 @@ A comprehensive, production-grade health-tech system developed for the **AI for 
 
 ## 1. Candidate Information
 
+- **Candidate Name:** Sujal Agrahari
 - **Candidate USN:** `1DA23AI050`
 - **Personal Seed ($S$):** `50` *(Derived from last 4 digits of USN: `0050` &rarr; `50`)*
 - **Selected Questions:**
@@ -213,7 +215,7 @@ Then visit [http://127.0.0.1:5500](http://127.0.0.1:5500).
 ## 6. Deliverables & Submission Checklist
 
 - [x] **Source Code & Files:** Organized by question folders (`question_a/`, `question_b/`) across Levels 1–3.
-- [x] **Commit History:** 8 commits distributed throughout the assignment window; Level 3 predictions committed prior to running experiments.
+- [x] **Commit History:** 11+ commits distributed throughout the assignment window; Level 3 predictions committed prior to running experiments.
 - [x] **Seed $S$:** Explicitly configured as `50` across all random seeds and splits.
 - [x] **Personal Intelligence Note:** Complete [PERSONAL_INTELLIGENCE.md](file:///c:/Users/sujal/OneDrive/Documents/AI-Personal-Health-Wellness-Assignment/AI-Personal-Health-Wellness-Assignment/PERSONAL_INTELLIGENCE.md) with two justified decisions per question and transparent AI usage declaration.
 - [x] **Automated Tests:** Comprehensive pytest suite testing edge cases and input validation.

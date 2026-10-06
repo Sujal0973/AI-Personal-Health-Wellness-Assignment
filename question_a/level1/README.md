@@ -47,6 +47,8 @@ Prior to modeling, automated data sanity checks verified:
 
 ## 4. Experimental Setup
 
+- **Candidate Name:** Sujal Agrahari
+- **Candidate USN:** `1DA23AI050`
 - **Random Seed ($S$):** `50` (derived from USN `1DA23AI050`)
 - **Train/Test Split:** 80% train (239 patients), 20% test (60 patients)
 - **Stratification:** Enabled (`stratify=y`) to maintain the 32.11% death-event prevalence across both splits.
