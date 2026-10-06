@@ -104,7 +104,7 @@ AI-Personal-Health-Wellness-Assignment/
 | **Logistic Regression (sklearn)** | 71.67% | 57.14% | 42.11% | Baseline linear model |
 | **Random Forest (sklearn)** | 75.00% | 66.67% | 42.11% | Baseline ensemble model |
 | **Logistic Regression (NumPy Scratch)** | **71.67%** | **57.14%** | **42.11%** | **100% match with scikit-learn** |
-| **Random Forest (Threshold = 0.50)** | 71.67% | 57.14% | 42.11% | Misses 11 out of 19 fatal cases |
+| **Random Forest (Threshold = 0.50)** | 75.00% | 66.67% | 42.11% | Baseline RF used by the API |
 | **Random Forest (Threshold = 0.16)** | **58.33%** | **42.50%** | **89.47%** | **Misses only 2 fatal cases; target recall reached** |
 
 **Top 3 Features Identified (Scratch vs Sklearn):**
@@ -217,6 +217,6 @@ Then visit [http://127.0.0.1:5500](http://127.0.0.1:5500).
 - [x] **Source Code & Files:** Organized by question folders (`question_a/`, `question_b/`) across Levels 1–3.
 - [x] **Commit History:** 11+ commits distributed throughout the assignment window; Level 3 predictions committed prior to running experiments.
 - [x] **Seed $S$:** Explicitly configured as `50` across all random seeds and splits.
-- [x] **Personal Intelligence Note:** Complete [PERSONAL_INTELLIGENCE.md](file:///c:/Users/sujal/OneDrive/Documents/AI-Personal-Health-Wellness-Assignment/AI-Personal-Health-Wellness-Assignment/PERSONAL_INTELLIGENCE.md) with two justified decisions per question and transparent AI usage declaration.
+- [x] **Personal Intelligence Note:** Complete [PERSONAL_INTELLIGENCE.md](PERSONAL_INTELLIGENCE.md) with two justified decisions per question and transparent AI usage declaration.
 - [x] **Automated Tests:** Comprehensive pytest suite testing edge cases and input validation.
-- [x] **Demo Video:** 3 to 5-minute screen recording uploaded to Google Drive with open view permissions.
+- [ ] **Demo Video:** 3 to 5-minute screen recording uploaded to Google Drive with open view permissions.

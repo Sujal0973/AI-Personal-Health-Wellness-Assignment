@@ -123,4 +123,4 @@ Execute from the project root:
 ```bash
 python -m pytest question_b/tests -v
 ```
-All 3 automated tests execute and pass in under 2 seconds.
+All 3 automated tests execute successfully; runtime depends on the local environment.

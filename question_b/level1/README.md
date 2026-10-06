@@ -17,7 +17,7 @@ Productionize the trained Random Forest health-risk model (from Question A, Seed
         │
         ├──> Pydantic Schema (Input Boundary Validation)
         ├──> Scikit-Learn Model (heart_failure_rf.joblib, Seed 50)
-        └──> Relational Database Persistence (PostgreSQL / SQLite)
+        └──> Relational Database Persistence (PostgreSQL)
 ```
 
 - **Backend Framework:** FastAPI (Asynchronous Python REST API)
@@ -115,4 +115,4 @@ Open `question_b/frontend/index.html` directly in any modern browser, or serve i
 ```bash
 python -m http.server 5500 --directory question_b/frontend
 ```
-Visit [http://127.0.0.1:5500](http://127.0.0.1:5500) to perform live assessments.
+Visit [http://127.0.0.1:5500](http://127.0.0.1:5500) to perform live assessments.
