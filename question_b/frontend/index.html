@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HealthGuard | Heart Failure Risk Assessment</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">♥</div>
+
+            <div>
+                <h1>HealthGuard</h1>
+                <p>AI-assisted health risk screening</p>
+            </div>
+        </div>
+
+        <div class="api-status">
+            <span id="statusDot" class="status-dot offline"></span>
+            <span id="statusText">Checking API...</span>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <section class="hero">
+            <div>
+                <span class="eyebrow">HEALTH RISK ASSESSMENT</span>
+
+                <h2>
+                    Heart Failure
+                    <span>Risk Screening</span>
+                </h2>
+
+                <p>
+                    Enter the required clinical indicators to receive an
+                    AI-generated risk estimate from the trained Random
+                    Forest model.
+                </p>
+            </div>
+
+            <div class="model-badge">
+                <span>MODEL</span>
+                <strong>Random Forest</strong>
+                <small>Seed 50 · 200 trees</small>
+            </div>
+        </section>
+
+
+        <form id="riskForm" novalidate>
+
+            <!-- Patient profile -->
+
+            <section class="card">
+
+                <div class="section-heading">
+                    <div class="section-number">01</div>
+
+                    <div>
+                        <h3>Patient Profile</h3>
+                        <p>Basic demographic information</p>
+                    </div>
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="age">
+                            Age
+                            <span>years</span>
+                        </label>
+
+                        <input
+                            id="age"
+                            name="age"
+                            type="number"
+                            min="1"
+                            max="120"
+                            step="1"
+                            placeholder="e.g. 60"
+                            required
+                        >
+
+                        <small class="error" id="ageError"></small>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="sex">
+                            Sex
+                        </label>
+
+                        <select id="sex" name="sex" required>
+                            <option value="">Select</option>
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select>
+
+                        <small class="error" id="sexError"></small>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Clinical measurements -->
+
+            <section class="card">
+
+                <div class="section-heading">
+                    <div class="section-number">02</div>
+
+                    <div>
+                        <h3>Clinical Measurements</h3>
+                        <p>Laboratory and cardiac indicators</p>
+                    </div>
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="ejection_fraction">
+                            Ejection Fraction
+                            <span>%</span>
+                        </label>
+
+                        <input
+                            id="ejection_fraction"
+                            type="number"
+                            min="0"
+                            max="100"
+                            step="1"
+                            placeholder="e.g. 30"
+                            required
+                        >
+
+                        <small class="hint">
+                            Percentage of blood pumped from the heart
+                        </small>
+
+                        <small
+                            class="error"
+                            id="ejection_fractionError"
+                        ></small>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="serum_creatinine">
+                            Serum Creatinine
+                            <span>mg/dL</span>
+                        </label>
+
+                        <input
+                            id="serum_creatinine"
+                            type="number"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="e.g. 1.2"
+                            required
+                        >
+
+                        <small class="error" id="serum_creatinineError"></small>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="serum_sodium">
+                            Serum Sodium
+                            <span>mEq/L</span>
+                        </label>
+
+                        <input
+                            id="serum_sodium"
+                            type="number"
+                            min="0"
+                            step="0.1"
+                            placeholder="e.g. 136"
+                            required
+                        >
+
+                        <small class="error" id="serum_sodiumError"></small>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="platelets">
+                            Platelets
+                            <span>count</span>
+                        </label>
+
+                        <input
+                            id="platelets"
+                            type="number"
+                            min="0"
+                            step="1"
+                            placeholder="e.g. 263358"
+                            required
+                        >
+
+                        <small class="error" id="plateletsError"></small>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="creatinine_phosphokinase">
+                            Creatinine Phosphokinase
+                            <span>mcg/L</span>
+                        </label>
+
+                        <input
+                            id="creatinine_phosphokinase"
+                            type="number"
+                            min="0"
+                            step="1"
+                            placeholder="e.g. 582"
+                            required
+                        >
+
+                        <small
+                            class="error"
+                            id="creatinine_phosphokinaseError"
+                        ></small>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Health indicators -->
+
+            <section class="card">
+
+                <div class="section-heading">
+                    <div class="section-number">03</div>
+
+                    <div>
+                        <h3>Health Indicators</h3>
+                        <p>Select the applicable conditions and habits</p>
+                    </div>
+                </div>
+
+
+                <div class="toggle-grid">
+
+                    <div class="toggle-field">
+                        <div>
+                            <strong>Anaemia</strong>
+                            <small>Patient has anaemia</small>
+                        </div>
+
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="anaemia"
+                            >
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+
+                    <div class="toggle-field">
+                        <div>
+                            <strong>Diabetes</strong>
+                            <small>Patient has diabetes</small>
+                        </div>
+
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="diabetes"
+                            >
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+
+                    <div class="toggle-field">
+                        <div>
+                            <strong>High Blood Pressure</strong>
+                            <small>History of hypertension</small>
+                        </div>
+
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="high_blood_pressure"
+                            >
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+
+                    <div class="toggle-field">
+                        <div>
+                            <strong>Smoking</strong>
+                            <small>Patient is a smoker</small>
+                        </div>
+
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="smoking"
+                            >
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Submit -->
+
+            <section class="assessment-action">
+
+                <div class="privacy-note">
+                    <span>🔒</span>
+
+                    <p>
+                        Only the model-required clinical inputs are sent
+                        to the prediction API.
+                    </p>
+                </div>
+
+
+                <button
+                    id="predictButton"
+                    type="submit"
+                >
+                    <span id="buttonText">Assess Risk</span>
+                    <span id="buttonLoader" class="loader hidden"></span>
+                </button>
+
+            </section>
+
+        </form>
+
+
+        <!-- Error -->
+
+        <section
+            id="apiError"
+            class="result-card error-result hidden"
+        >
+            <div class="result-icon">!</div>
+
+            <div>
+                <h3>Assessment unavailable</h3>
+                <p id="apiErrorText">
+                    The prediction service could not process the request.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- Result -->
+
+        <section
+            id="result"
+            class="result-card hidden"
+        >
+
+            <div class="result-header">
+                <div>
+                    <span class="eyebrow">ASSESSMENT RESULT</span>
+                    <h3 id="riskLabel">Risk Result</h3>
+                </div>
+
+                <div id="riskIcon" class="result-icon">
+                    ✓
+                </div>
+            </div>
+
+
+            <div class="risk-score">
+
+                <div class="score-number">
+                    <span id="riskPercentage">0</span>
+                    <small>%</small>
+                </div>
+
+                <div class="score-description">
+                    <span>Estimated model probability</span>
+
+                    <div class="progress-track">
+                        <div
+                            id="riskBar"
+                            class="progress-bar"
+                        ></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="result-details">
+
+                <div>
+                    <span>Classification threshold</span>
+                    <strong id="thresholdValue">0.50</strong>
+                </div>
+
+                <div>
+                    <span>Model</span>
+                    <strong>Random Forest</strong>
+                </div>
+
+                <div>
+                    <span>Random seed</span>
+                    <strong>50</strong>
+                </div>
+
+            </div>
+
+
+            <div class="disclaimer">
+                <strong>Important</strong>
+
+                <p>
+                    This is an AI-based screening experiment for
+                    educational purposes. It is not a medical diagnosis
+                    and should not replace evaluation by a qualified
+                    healthcare professional.
+                </p>
+            </div>
+
+            <button
+                id="newAssessment"
+                class="secondary-button"
+                type="button"
+            >
+                Start New Assessment
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            HealthGuard · AI Personal Health & Wellness Assignment
+        </p>
+
+        <p>
+            Educational use only · Model output is not medical advice
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
