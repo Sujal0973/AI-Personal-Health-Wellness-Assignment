@@ -58,11 +58,47 @@ the same.
 
 ### Question B
 
-#### Decision 1
-Decision will be recorded after implementation and testing.
+#### Decision 1 — Database Selection
 
-#### Decision 2
-Decision will be recorded after robustness testing.
+**Chosen:** PostgreSQL for storing prediction requests and results.
+
+**Rejected:** SQLite.
+
+**Reason:** Question B Level 3 requires explaining how the application can
+be made safe for 100 users at once, so concurrent database access was an
+important consideration. PostgreSQL is better suited for concurrent
+requests and multiple database connections than a file-based SQLite
+database. I also verified the database integration by sending prediction
+requests and checking that the stored request count, average predicted risk,
+and high-risk share changed correctly.
+
+#### Decision 2 — Backend Validation
+
+**Chosen:** Validate all patient inputs at the FastAPI backend using
+Pydantic, in addition to frontend validation.
+
+**Rejected:** Rely only on JavaScript validation in the frontend.
+
+**Reason:** Frontend validation can be bypassed by sending requests directly
+to the API. Backend validation therefore provides the actual input boundary
+for the application. The pytest suite includes an invalid age test, and the
+API correctly rejected the invalid request with HTTP 422. This confirmed
+that invalid input is blocked even when it reaches the backend directly.
+
+#### Decision 3 — Deployed Prediction Threshold
+
+**Chosen:** Keep the deployed API classification threshold at 0.50.
+
+**Rejected:** Immediately deploy the 0.16 threshold identified during the
+Question A Level 3 experiment.
+
+**Reason:** The 0.16 threshold increased recall to approximately 0.90 but
+also reduced precision and accuracy substantially on the test set. Since
+this threshold was obtained from an assignment experiment and was not
+clinically validated, I chose not to use it as a real-world medical
+screening threshold in the application. The deployed API therefore uses
+0.50 and is treated as an educational/demo system rather than a clinical
+decision tool.
 
 ---
 
